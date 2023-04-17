@@ -3,6 +3,7 @@ import * as https from "https";
 import * as mongoose from "mongoose";
 import todoRoutes from "./modules/todo/routes/todo.routes";
 import userRoutes from "./modules/user/routes/user.routes";
+import {MONGO_URI} from "./config/config";
 const fs = require('fs');
 
 const options = {
@@ -20,7 +21,7 @@ app.use('/user', userRoutes);
 
 const start = async (): Promise<void> => {
     try {
-        await mongoose.connect(`mongodb://dataholic:Ooxg41uVTmoOcs4j@34.165.1.243:27017/?authMechanism=DEFAULT`, { dbName: 'todo' });
+        await mongoose.connect(MONGO_URI, { dbName: 'todo' });
         mongoose.set('debug', true);
 
         https.createServer(options, app).listen(3080, () => {
