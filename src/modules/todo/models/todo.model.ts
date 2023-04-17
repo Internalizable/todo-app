@@ -10,7 +10,7 @@ export class Todo {
     public _id!: mongoose.Types.ObjectId;
 
     @prop()
-    public guestId!: string;
+    public userId!: string;
 
     @prop()
     public message!: string;

@@ -2,6 +2,7 @@ import express from "express";
 import * as https from "https";
 import * as mongoose from "mongoose";
 import todoRoutes from "./modules/todo/routes/todo.routes";
+import userRoutes from "./modules/user/routes/user.routes";
 const fs = require('fs');
 
 const options = {
@@ -9,13 +10,13 @@ const options = {
     cert: fs.readFileSync('server.cert')
 };
 
-
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/todo', todoRoutes);
+app.use('/user', userRoutes);
 
 const start = async (): Promise<void> => {
     try {
